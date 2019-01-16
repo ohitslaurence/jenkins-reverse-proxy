@@ -16,7 +16,7 @@ If you do not yet have Jenkins installed, you can follow this link to [install J
 
 ## Configure Jenkins
 
-From your Jenkins dashboard, navigate to  **Manage Jenkins > Configure System**.  Here you will find the **Jenkins URL** field. Be sure to set this to your new subdomain,, ie. https:<span></span>//jenkins.<span></span>example.<span></span>com/
+From your Jenkins dashboard, navigate to  **Manage Jenkins > Configure System**.  Here you will find the **Jenkins URL** field. Be sure to set this to your new subdomain, ie. https:<span></span>//jenkins.<span></span>example.<span></span>com/
 
 ## Nginx Config
 
@@ -29,7 +29,7 @@ $ sudo nano /etc/nginx/sites-available/jenkins.example.com
 
 Add the following to the file, replacing the server_name and ssl certificate keys where applicable:
 
-```javascript
+```nginx
 upstream  jenkins {
 	server  127.0.0.1:8080  fail_timeout=0;
 }
@@ -70,13 +70,13 @@ server {
 Enable the Server Block and restart Nginx:
 
 ```bash
-# create the server block symlink
+# Create the server block symlink
 $ sudo ln -s /etc/nginx/sites-available/jenkins.example.com /etc/nginx/sites-enabled/
 
-# test for nginx config errors
+# Test for nginx config errors
 $ sudo nginx -t
 
-# restart nginx
+# Restart nginx
 $ sudo systemctl restart nginx
 ```
 
